@@ -18,7 +18,36 @@
 ## Builder
 ### Класс **Project** не принимает параметров
 ### Методы и декораторы класса Builder
--SetCss *(интидификатор, ключ, значение)*
--BuildProject *(объект_класса_project, главная_функция, начальная_старница **по умолчанию home**)*
+- SetCss *(интидификатор, ключ, значение)*
+- BuildProject *(объект_класса_project, главная_функция, начальная_старница **по умолчанию home**)*
 **SetCss - функция позволяющая изменять css код элемента**
 **BuildProject - главная функция класса, служащая генератором html страницы на основе json'а класса project**
+
+### Пример кода
+``` python
+from ProjectBuilder import Builder, Project
+
+project = Project('Test', 'descr')
+builder = Builder()
+
+@project.Page
+def home(this):
+    project.AddPng(this, 'test.png')
+    project.AddPng(this, 'test.png')
+    project.AddPng(this, 'test.png')
+    project.AddChapter(this, 'Introduction', 'text')
+    project.AddLink(this, 'link', 'https://www.youtube.com/')
+
+@project.Page
+def info(this):
+    project.AddPng(this, 'test.png')
+    project.AddChapter(this, 'Info', 'text')
+    project.AddLink(this, 'link', 'https://www.youtube.com/')
+
+@builder.Generation
+def index():
+    [home, info]
+    builder.SetCss('.chptname', 'backgroundColor', 'red')
+
+builder.BuildProject(project, index, start_function='home')
+```
