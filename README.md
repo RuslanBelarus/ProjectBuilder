@@ -51,3 +51,5 @@ def index():
 
 builder.BuildProject(project, index, start_function='home')
 ```
+# Установка библиотеки в окружение
+> curl https://github.com/RuslanBelarus/ProjectBuilder/ProjectBuilder.py -o ProjectBuilder.py
