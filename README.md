@@ -27,9 +27,9 @@
 - **AddFont - функция позволяющая загружать шрифты**
 - **BuildProject - главная функция класса, служащая генератором html страницы на основе json'а класса project**
 # Пример Проекта
-![Моя картинка](ex_img_3.png)
-![Моя картинка](ex_img_2.png)
-![Моя картинка](ex_img_1.png)
+![Моя картинка](md/ex_img_1.png)
+![Моя картинка](md/ex_img_2.png)
+![Моя картинка](md/ex_img_3.png)
 ``` python
 from ProjectBuilder import Builder, Project
 
