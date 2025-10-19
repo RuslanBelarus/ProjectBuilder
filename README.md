@@ -26,7 +26,8 @@
 - **SetCss - функция позволяющая изменять css код элемента**
 - **BuildProject - главная функция класса, служащая генератором html страницы на основе json'а класса project**
 - **AddFont - функция позволяющая загружать шрифты**
-# Пример Проекты
+# Пример Проекта
+![Моя картинка](images/picture.png)
 ``` python
 from ProjectBuilder import Builder, Project
 
