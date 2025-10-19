@@ -1,4 +1,4 @@
-import os, webbrowser
+import webbrowser
 
 class Project:
 
@@ -30,10 +30,14 @@ class Builder:
         self.flname, self.cssswaps = '', ''
 
     def SetCss(self, idifer: str, key : str, item : str):
-        self.cssswaps += f'document.querySelector("{idifer}").style.{key}="{item}";'
+        if idifer.find('.') != -1:
+            self.cssswaps += f'document.querySelectorAll("{idifer}").forEach(element => [element.style.{key}="{item}";]);'.replace('[', '{').replace(']', '}')
+        elif idifer.find('#') != -1:
+            self.cssswaps += f'document.querySelector("{idifer}").style.{key}="{item}";'
+        else:
+            self.cssswaps += f'document.querySelectorAll("{idifer}").forEach(element => [element.style.{key}="{item}";]);'.replace('[', '{').replace(']', '}')
 
     def _fileFormat(self):
-        [ os.system(command) for command in ['@echo off', 'mkdir dist'] ]
         open(f'{self.flname}.html', 'w', encoding='utf-8').write(self.html)
         webbrowser.open(f'{self.flname}.html')
 
